@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "test": "tsx src/client-test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.23.0",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@cfworker/json-schema": "^4.1.1",
+    "@types/node": "^24.10.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
