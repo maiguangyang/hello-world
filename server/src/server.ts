@@ -4,18 +4,29 @@
  * @Date: 2025-12-02 14:15:16
  */
 
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { z } from 'zod';
 import http from 'http';
 import type { IncomingMessage, ServerResponse } from 'http';
-import { URL } from 'url';
+import { fileURLToPath, URL } from 'url';
+import { readFileSync } from 'fs';
+import { dirname, join } from 'path';
+
+// 获取当前文件的目录路径
+const __filename = fileURLToPath(import.meta.url); // 获取当前模块的绝对路径
+const __dirname = dirname(__filename);  // 获取当前文件所在的目录
+
+// 计算目标文件的路径
+const filePath = join(__dirname, '../../web', 'dist', 'index.html');
+
+const HTML = readFileSync(filePath, 'utf8');
 
 /** 服务器配置常量 */
 const SERVER_CONFIG = {
   name: 'hello-mcp-server',
-  version: '1.0.0',
   defaultPort: 3000,
+  version: "1.0.0"
 } as const;
 
 /** Add 工具的输入参数接口 */
@@ -50,44 +61,67 @@ const server = new McpServer(
   }
 );
 
-// 注册 add 工具
-server.registerTool(
-  'add',
-  {
-    description: '将两个数字相加',
-    inputSchema: {
-      a: z.number().describe('第一个数字'),
-      b: z.number().describe('第二个数字'),
-    },
-  },
-  async ({ a, b }) => {
-    // 参数会自动验证
-    return {
-      content: [
-        {
-          type: 'text' as const,
-          text: `结果是: ${a + b}`,
-        },
-      ],
-    };
-  }
-);
 
-// 注册 hello://greeting 资源
+// 注册 ui://widget/kanban-board.html 资源
 server.registerResource(
-  '问候消息',
-  'hello://greeting',
+  'hello-world-widget',
+  'ui://widget/hello-world.html',
   {
     description: '一个简单的问候消息',
-    mimeType: 'text/plain',
+    mimeType: 'text/html+skybridge',
   },
   async (uri) => {
     return {
       contents: [
         {
           uri: uri.toString(),
-          mimeType: 'text/plain',
-          text: 'Hello from MCP Server! 你好，这是一个简单的 MCP 服务器示例。',
+          mimeType: 'text/html+skybridge',
+          text: HTML.trim(),
+        },
+      ],
+    };
+  }
+);
+
+// 注册动态资源模板
+server.registerResource(
+  'hello-world-template', // 资源名称
+  new ResourceTemplate(
+    'hello-world://{id}', // URI 模板，{id} 是变量
+    { list: undefined } // list 回调，如果不需要列出所有可能的资源，可以传 undefined
+  ),
+  {
+    description: '用户个人资料',
+    mimeType: "text/html+skybridge",
+  },
+  // 读取回调：注意这里多了一个 variables 参数
+  async (uri, variables) => {
+    return {
+      contents: [
+        {
+          uri: uri.toString(),
+          mimeType: "text/html+skybridge",
+          text: HTML.trim(),
+        },
+      ],
+    };
+  }
+);
+
+// 注册 add 工具
+server.registerTool(
+  'hello-world',
+  {
+    description: 'show hello world',
+    inputSchema: {},
+    _meta: { "openai/outputTemplate": "ui://widget/hello-world.html" },
+  },
+  async () => {
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Hello World`,
         },
       ],
     };
@@ -151,7 +185,7 @@ async function handleHttpRequest(
         <h2>可用功能</h2>
         <ul>
           <li><strong>工具:</strong> add (将两个数字相加)</li>
-          <li><strong>资源:</strong> hello://greeting (问候消息)</li>
+          <li><strong>资源:</strong> ui://widget/kanban-board.html (问候消息)</li>
         </ul>
       </body>
       </html>
