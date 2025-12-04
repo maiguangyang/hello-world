@@ -1,19 +1,24 @@
-import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-12-03 19:31:44
+ */
+import { Server } from "@modelcontextprotocol/sdk/server/index";
 import {
   CallToolRequestSchema,
   ListResourceTemplatesRequestSchema,
   ListResourcesRequestSchema,
   ListToolsRequestSchema,
   ReadResourceRequestSchema,
-} from "@modelcontextprotocol/sdk/types.js";
-import { SERVER_CONFIG } from "../config.js";
+} from "@modelcontextprotocol/sdk/types";
+import { SERVER_CONFIG } from "../config";
 import {
   handleCallTool,
   handleListResourceTemplates,
   handleListResources,
   handleListTools,
   handleReadResource,
-} from "./handlers.js";
+} from "./handlers";
 
 /**
  * Create and configure MCP server instance

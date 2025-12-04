@@ -1,6 +1,11 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-12-03 19:31:26
+ */
 import fs from "node:fs";
 import path from "node:path";
-import { ASSETS_DIR } from "../config.js";
+import { ASSETS_DIR } from "../config";
 
 /**
  * Reads widget HTML from the assets directory

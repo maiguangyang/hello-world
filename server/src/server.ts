@@ -1,7 +1,12 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-12-03 08:26:32
+ */
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { URL } from "node:url";
-import { SERVER_CONFIG, SSE_PATH, POST_PATH } from "./config.js";
-import { handleSseRequest, handlePostMessage } from "./http/handlers.js";
+import { SERVER_CONFIG, SSE_PATH, POST_PATH } from "./config";
+import { handleSseRequest, handlePostMessage } from "./http/handlers";
 
 /**
  * Get port from environment or use default

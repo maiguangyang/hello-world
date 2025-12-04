@@ -1,12 +1,12 @@
-import type { Resource, ResourceTemplate, Tool } from "@modelcontextprotocol/sdk/types.js";
+import type { Resource, ResourceTemplate, Tool } from "@modelcontextprotocol/sdk/types";
 import { z } from "zod";
-import type { PizzazWidget } from "../types.js";
-import { readWidgetHtml } from "./loader.js";
+import type { CustomWidget } from "../types";
+import { readWidgetHtml } from "./loader";
 
 /**
  * Generate widget metadata for MCP
  */
-export function widgetMeta(widget: PizzazWidget) {
+export function widgetMeta(widget: CustomWidget) {
   return {
     "openai/outputTemplate": widget.templateUri,
     "openai/toolInvocation/invoking": widget.invoking,
@@ -19,23 +19,23 @@ export function widgetMeta(widget: PizzazWidget) {
 /**
  * Widget definitions
  */
-export const widgets: PizzazWidget[] = [
+export const widgets: CustomWidget[] = [
   {
-    id: "pizza-list",
-    title: "Show Pizza List",
-    templateUri: "ui://widget/pizza-list.html",
+    id: "dinein-list",
+    title: "Show DineIn List",
+    templateUri: "ui://widget/dinein-list.html",
     invoking: "Hand-tossing a list",
     invoked: "Served a fresh list",
     html: readWidgetHtml("index"),
-    responseText: "Rendered a pizza list!",
+    responseText: "Rendered a dinein list!",
   },
 ];
 
 /**
  * Widget lookup maps
  */
-export const widgetsById = new Map<string, PizzazWidget>();
-export const widgetsByUri = new Map<string, PizzazWidget>();
+export const widgetsById = new Map<string, CustomWidget>();
+export const widgetsByUri = new Map<string, CustomWidget>();
 
 widgets.forEach((widget) => {
   widgetsById.set(widget.id, widget);

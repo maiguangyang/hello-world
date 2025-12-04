@@ -9,14 +9,14 @@
  * 演示如何连接到 MCP 服务器的 SSE 端点
  */
 
-import { Client } from '@modelcontextprotocol/sdk/client/index.js';
-import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js';
+import { Client } from '@modelcontextprotocol/sdk/client/index';
+import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse';
 import type {
   ListToolsResult,
   CompatibilityCallToolResult,
   ListResourcesResult,
   ReadResourceResult,
-} from '@modelcontextprotocol/sdk/types.js';
+} from '@modelcontextprotocol/sdk/types';
 
 /** 客户端配置 */
 const CLIENT_CONFIG = {

@@ -1,8 +1,13 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-12-03 19:32:04
+ */
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
-import { POST_PATH } from "../config.js";
-import { createMcpServer } from "../mcp/server-factory.js";
-import { addSession, getSession, removeSession } from "./session-manager.js";
+import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse";
+import { POST_PATH } from "../config";
+import { createMcpServer } from "../mcp/server-factory";
+import { addSession, getSession, removeSession } from "./session-manager";
 
 /**
  * Handle SSE connection request (GET /mcp)

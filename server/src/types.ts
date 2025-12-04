@@ -4,7 +4,7 @@ import type { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js
 /**
  * Widget definition interface
  */
-export interface PizzazWidget {
+export interface CustomWidget {
   id: string;
   title: string;
   templateUri: string;

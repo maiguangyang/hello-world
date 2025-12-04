@@ -1,4 +1,9 @@
-import type { SessionRecord } from "../types.js";
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-12-03 19:31:54
+ */
+import type { SessionRecord } from "../types";
 
 /**
  * SSE session storage

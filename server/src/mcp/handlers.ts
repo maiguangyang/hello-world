@@ -1,10 +1,15 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-12-03 19:31:40
+ */
 import type {
   CallToolRequest,
   ListResourceTemplatesRequest,
   ListResourcesRequest,
   ListToolsRequest,
   ReadResourceRequest,
-} from "@modelcontextprotocol/sdk/types.js";
+} from "@modelcontextprotocol/sdk/types";
 import {
   resources,
   resourceTemplates,
@@ -13,7 +18,7 @@ import {
   widgetsById,
   widgetsByUri,
   widgetMeta,
-} from "../widgets/index.js";
+} from "../widgets/index";
 
 /**
  * Handle resources/list request
