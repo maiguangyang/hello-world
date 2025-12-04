@@ -29,6 +29,26 @@ export const widgets: CustomWidget[] = [
     html: readWidgetHtml("index"),
     responseText: "Rendered a dinein list!",
   },
+
+  // 下面是官网例子
+  // {
+  //   id: "pizza-carousel",
+  //   title: "Show Pizza Carousel",
+  //   templateUri: "ui://widget/pizza-carousel.html",
+  //   invoking: "Carousel some spots",
+  //   invoked: "Served a fresh carousel",
+  //   html: readWidgetHtml("pizzaz-carousel"),
+  //   responseText: "Rendered a pizza carousel!",
+  // },
+  // {
+  //   id: "pizza-list",
+  //   title: "Show Pizza List",
+  //   templateUri: "ui://widget/pizza-list.html",
+  //   invoking: "Hand-tossing a list",
+  //   invoked: "Served a fresh list",
+  //   html: readWidgetHtml("pizzaz-list"),
+  //   responseText: "Rendered a pizza list!",
+  // },
 ];
 
 /**
