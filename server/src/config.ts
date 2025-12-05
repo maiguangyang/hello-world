@@ -22,6 +22,7 @@ export const SERVER_CONFIG = {
  */
 export const ROOT_DIR = path.resolve(__dirname, "..", "..");
 export const ASSETS_DIR = path.resolve(ROOT_DIR, "web", "dist");
+// export const ASSETS_DIR = path.resolve(ROOT_DIR, "assets");
 
 /**
  * SSE endpoint paths

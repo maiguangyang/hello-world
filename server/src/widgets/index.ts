@@ -30,7 +30,7 @@ export const widgets: CustomWidget[] = [
     responseText: "Rendered a dinein list!",
   },
 
-  // 下面是官网例子
+  // // 下面是官网例子
   // {
   //   id: "pizza-carousel",
   //   title: "Show Pizza Carousel",
